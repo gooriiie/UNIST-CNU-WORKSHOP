@@ -1,86 +1,61 @@
-# UNIST × CNU Joint Workshop Website
+# UNIST x CNU 공동 워크샵 Website
 
-UNIST와 충남대학교 공동 워크숍을 위한 심플한 GitHub Pages 웹사이트입니다.
+UNIST와 충남대학교 공동 워크샵용 GitHub Pages 웹사이트입니다.
 
-## 포함 기능
+## 현재 반영된 주요 정보
 
-- 워크숍 기본 일정 안내
-- 세부 스케줄
-- 점심/저녁 식당 위치 링크
-- 숙소 이름 / 위치 / 예약 페이지 링크
-- 발표자료 업로드 / 열람 링크
-- 모바일 반응형 디자인
+- 행사명: **UNIST x CNU 공동 워크샵**
+- 일정: **2026.09.30 ~ 2026.10.01**
+- 장소: **충남대학교**
+- 9월 30일: 점심 → CNU 연구발표 → UNIST 연구발표 → 임성수 교수님 발표 → CNU 투어 → 저녁/네트워킹
+- 10월 1일: 점심 식사
+- 발표자료 저장소: `gooriiie/UNIST-CNU-WORKSHOP/materials`
 
-## 1. 정보 수정
+## 어디를 수정하면 되나요?
 
-### 날짜 및 장소
+### 1. 행사 날짜와 장소
 
-`script.js` 상단을 수정하세요.
+`script.js` 맨 위의 `WORKSHOP` 객체를 수정합니다.
 
 ```js
 const WORKSHOP = {
-  date: "2026. 10. 16. (Fri)",
-  venue: "UNIST 110동 N101",
-  repository: "https://github.com/YOUR-ORG/YOUR-REPO",
+  date: "2026. 09. 30 ~ 2026. 10. 01",
+  venue: "충남대학교",
+  repository: "https://github.com/gooriiie/UNIST-CNU-WORKSHOP",
 };
 ```
 
-### 스케줄 / 식당
+### 2. 홈페이지 큰 제목
 
-`index.html`의 `schedule-row` 부분에서 시간, 제목, 설명, 식당 링크를 수정하세요.
-
-예:
+`index.html` 상단의 `hero` 섹션에서 아래 부분을 수정합니다.
 
 ```html
-<a class="map-link"
-   href="https://map.naver.com/..."
-   target="_blank"
-   rel="noopener noreferrer">
-  식당 위치 보기 ↗
-</a>
+<h1>UNIST x CNU<br />공동 워크샵</h1>
 ```
 
-## 2. 발표자료 업로드 설정
+### 3. 세부 스케줄 / 발표자 / 식당 링크
 
-GitHub Pages 자체에는 파일 업로드 서버 기능이 없습니다. 이 템플릿은 GitHub 저장소의 `materials/` 폴더 업로드 화면으로 연결합니다.
+`index.html`에서 `id="schedule"`을 검색하세요. 그 아래의 `schedule-row`들이 각각 하나의 일정입니다.
 
-1. 저장소에 `materials` 폴더를 만듭니다.
-2. `script.js`의 `repository`를 실제 저장소 주소로 변경합니다.
-3. 발표자에게 저장소 Write 권한을 부여합니다.
-4. 홈페이지의 **발표자료 업로드** 버튼을 누르면 GitHub 업로드 화면으로 이동합니다.
+- 시간: `<div class="schedule-time">14:00</div>`
+- 일정명: `<h3>충남대학교 연구발표</h3>`
+- 설명: `<p>...</p>`
+- 식당 링크: `<a class="map-link" href="...">...</a>`
+- 발표자: `speaker-list` 안의 `speaker-item`을 추가/수정
 
-공개 업로드가 필요하다면 Google Drive / Dropbox / Google Form 업로드 링크로 버튼 URL만 교체할 수도 있습니다.
+### 4. 숙소 정보
 
-## 3. GitHub Pages 배포
+`index.html`에서 `id="accommodation"`을 검색하고 숙소명, 위치, 링크를 수정합니다.
 
-1. 이 폴더의 파일을 GitHub 저장소 root에 업로드합니다.
-2. GitHub 저장소의 **Settings → Pages**로 이동합니다.
-3. `Deploy from a branch`를 선택합니다.
-4. Branch를 `main`, 폴더를 `/ (root)`로 선택합니다.
-5. Save를 누릅니다.
+### 5. 발표자료 링크
 
-잠시 후 다음과 같은 주소로 사이트가 공개됩니다.
+`script.js`의 `repository`만 실제 저장소 주소로 두면:
 
-```text
-https://YOUR-ID.github.io/YOUR-REPO/
-```
+- 발표자료 업로드 → `.../upload/main/materials`
+- 업로드된 자료 보기 → `.../tree/main/materials`
 
-## 파일 구성
+으로 자동 연결됩니다.
 
-```text
-.
-├── index.html
-├── styles.css
-├── script.js
-├── README.md
-├── .nojekyll
-└── materials/
-    └── README.md
-```
+## GitHub Pages 반영
 
-
-## 4. 숙소 정보 수정
-
-`index.html`의 `#accommodation` 섹션에서 숙소 이름, 위치, 예약 링크를 수정할 수 있습니다.
-현재 Airbnb 숙소는 **캔디 하우스 (대전 유성구, 충남대학교 서문 인접)**로 입력되어 있습니다.
-Agoda 링크는 숙소명이 정적 페이지에 노출되지 않아 `Property #43289`로 표시해 두었으므로, 실제 숙소명을 확인한 뒤 해당 텍스트만 교체하면 됩니다.
+수정 파일을 현재 Pages가 바라보는 브랜치에 업로드/commit 한 후 페이지를 새로고침하세요. 예전 화면이 남으면 `Ctrl + Shift + R`로 강력 새로고침하면 됩니다.
